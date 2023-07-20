@@ -1,5 +1,6 @@
 import requests
 import time
+import streamlit as st
 
 AIRNOW_API_KEY = st.secrets["AIRNOW_API_KEY"]
 

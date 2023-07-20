@@ -1,5 +1,5 @@
 import streamlit as st
-import aqi
+from src import aqi
 from src import forecast
 from src import gazetteer
 from src import alerts

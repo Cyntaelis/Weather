@@ -53,5 +53,5 @@ if st.session_state.zip_code != "":
 else:
     thingy = ""
 
-txt = st.text_area(st.session_state.query, thingy, height=400)
+txt = st.text_area(st.session_state.query, thingy, height=800)
                    

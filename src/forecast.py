@@ -15,7 +15,6 @@ def weather(zone):
     
     post = ""
     
-
     try:
         header = {"accept" : "application/geo+json"}
         url = f"https://api.weather.gov/zones/public/{zone}/forecast"
@@ -45,8 +44,10 @@ def weather(zone):
     try:
         r2 = r.json()["properties"]["zone"]
         r2 = requests.get(url,headers=header)
-        name = r2.json()["properties"]["name"]
+        name = " "+r2.json()["properties"]["name"]
+    except:
+        name = ""
 
-    post = f"=== WEATHER {zone} {name} ==="+post #TODO add zone name
+    post = f"=== WEATHER {zone}{name} ===" + post #TODO add zone name
 
     return post

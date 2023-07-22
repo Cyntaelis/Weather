@@ -50,6 +50,6 @@ def weather(zone):
 
     post += "=== END ==="        
 
-    post = f"=== WEATHER {zone}{name} ===" + post #TODO add zone name
+    post = f"=== WEATHER {zone}{name.upper()} ===" + post #TODO add zone name
 
     return post

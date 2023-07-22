@@ -19,6 +19,7 @@ def weather(zone):
         header = {"accept" : "application/geo+json"}
         url = f"https://api.weather.gov/zones/public/{zone}/forecast"
         r = requests.get(url,headers=header)
+        name = " "+r.json()["properties"]["name"]
         post += "\n\nDate: "
         post += r.json()["properties"]["updated"].replace("T","\n Time: ")[:-6]+"\n TZ: "+r.json()["properties"]["updated"][-6:]
         post += "\n\n"
@@ -40,13 +41,6 @@ def weather(zone):
         except Exception as e:
             return(post,"\n",e)
     post += "=== END ==="        
-
-    try:
-        r2 = r.json()["properties"]["zone"]
-        r2 = requests.get(url,headers=header)
-        name = " "+r2.json()["properties"]["name"]
-    except:
-        name = str(r2.json()["properties"].keys())
 
     post = f"=== WEATHER {zone}{name} ===" + post #TODO add zone name
 

@@ -42,7 +42,7 @@ def weather(zone):
             return(post,"\n",e)
         
     try:
-        url2 = "https://api.weather.gov/zones/forecast/{zone}"
+        url2 = f"https://api.weather.gov/zones/forecast/{zone}"
         r2 = requests.get(url2)
         name = " "+r2.json()["properties"]["name"]
     except:
@@ -50,6 +50,6 @@ def weather(zone):
 
     post += "=== END ==="        
 
-    post = f"=== WEATHER {zone}{name} ===\n" + post #TODO add zone name
+    post = f"=== WEATHER {zone}{name} ===" + post #TODO add zone name
 
     return post

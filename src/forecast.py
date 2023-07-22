@@ -45,6 +45,7 @@ def weather(zone):
         url2 = f"https://api.weather.gov/zones/forecast/{zone}"
         r2 = requests.get(url2)
         name = " "+r2.json()["properties"]["name"]
+        name += " "+r2.json()["properties"]["state"]
     except:
         name = ""
 

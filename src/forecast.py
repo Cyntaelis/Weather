@@ -25,6 +25,7 @@ def weather(zone):
         post += "\n\n"
     except Exception as e:
         post += str(e)
+        name = ""
     
     counter=0
     for x in r.json()["properties"]["periods"]:

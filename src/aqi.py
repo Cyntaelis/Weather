@@ -27,7 +27,7 @@ def get_aqi(zip_code):
         fmt_gc = fmt_current(gc)
         return fmt_gc
     except:
-        return "Error, probably fucked zip"
+        return "Error, probably invalid zip"
 
 if __name__ == "__main__":
     print(get_aqi(10020))

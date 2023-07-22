@@ -43,13 +43,13 @@ if st.session_state.zip_code != "":
             zone = forecast.coords_to_zone(zip_coords)
             thingy = forecast.weather(zone)
         else:
-            thingy = "invalid zip"#,st.session_state.zip_code#,get_gazetteer().keys()
+            thingy = "Error, probably invalid zip"#,st.session_state.zip_code#,get_gazetteer().keys()
     if st.session_state.query == "Alerts":
         if st.session_state.zip_code in get_gazetteer():
             zip_coords = get_gazetteer()[st.session_state.zip_code]
             thingy = alerts.get_alerts(zip_coords)
         else:
-            thingy = "invalid zip",st.session_state.zip_code,get_gazetteer().keys()
+            thingy = "Error, probably invalid zip"#,st.session_state.zip_code,get_gazetteer().keys()
 else:
     thingy = ""
 

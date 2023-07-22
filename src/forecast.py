@@ -14,18 +14,17 @@ def coords_to_zone(coords):
 def weather(zone):
     
     post = ""
-    
+    name = ""
     try:
         header = {"accept" : "application/geo+json"}
         url = f"https://api.weather.gov/zones/public/{zone}/forecast"
         r = requests.get(url,headers=header)
-        name = " "+r.json()["properties"]["name"]
         post += "\n\nDate: "
         post += r.json()["properties"]["updated"].replace("T","\n Time: ")[:-6]+"\n TZ: "+r.json()["properties"]["updated"][-6:]
         post += "\n\n"
     except Exception as e:
         post += str(e)
-        name = ""
+        
     
     counter=0
     for x in r.json()["properties"]["periods"]:
@@ -41,8 +40,16 @@ def weather(zone):
             #post += "\n"
         except Exception as e:
             return(post,"\n",e)
+        
+    try:
+        url2 = "https://api.weather.gov/zones/forecast/{zone}"
+        r2 = requests.get(url2)
+        name = " "+r2.json()["properties"]["name"]
+    except:
+        name = ""
+
     post += "=== END ==="        
 
-    post = f"=== WEATHER {zone}{name} ===" + post #TODO add zone name
+    post = f"=== WEATHER {zone}{name} ===\n" + post #TODO add zone name
 
     return post

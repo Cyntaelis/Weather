@@ -46,7 +46,7 @@ def weather(zone):
         r2 = requests.get(url,headers=header)
         name = " "+r2.json()["properties"]["name"]
     except:
-        name = ""
+        name = str(r2.json()["properties"].keys())
 
     post = f"=== WEATHER {zone}{name} ===" + post #TODO add zone name
 

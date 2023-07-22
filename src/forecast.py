@@ -13,7 +13,8 @@ def coords_to_zone(coords):
 
 def weather(zone):
     
-    post = f"=== WEATHER {zone} ===" #TODO add zone name
+    post = ""
+    
 
     try:
         header = {"accept" : "application/geo+json"}
@@ -40,4 +41,12 @@ def weather(zone):
         except Exception as e:
             return(post,"\n",e)
     post += "=== END ==="        
+
+    try:
+        r2 = r.json()["properties"]["zone"]
+        r2 = requests.get(url,headers=header)
+        name = r2.json()["properties"]["name"]
+
+    post = f"=== WEATHER {zone} {name} ==="+post #TODO add zone name
+
     return post

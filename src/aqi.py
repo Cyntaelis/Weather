@@ -20,7 +20,8 @@ def get_aqi(zip_code):
         return current
 
     def fmt_current(gc):
-        return f'{zip_code}\nOzone: {gc["Ozone"][:2]}\nPM2.5: {gc["PM2.5"][:2]}\nPM10:  {gc["PM10"][:2]}'
+        return f'{zip_code}\nOzone: {gc["Ozone"][:2]}\nPM2.5: {gc["PM2.5"][:2]}\n{
+            "PM10:  "+str(gc["PM10"][:2]) if "PM10" in gc else ""}'
         
     try:
         gc = get_current(zip_code)
